@@ -41,8 +41,19 @@
     </div>
 
     <script>
-        var video = document.querySelector("#videoElement");
-        
+
+let accelerometer = new Accelerometer({frequency: 60});
+
+accelerometer.addEventListener('reading', e => {
+  document.getElementById("acceleration_along_X").innerHTML("Acceleration along the X-axis " + accelerometer.x);
+  document.getElementById("acceleration_along_Y").innerHTML("Acceleration along the X-axis " + accelerometer.y;
+  document.getElementById("acceleration_along_Z").innerHTML("Acceleration along the X-axis " + accelerometer.z);
+ 
+});
+accelerometer.start();
+
+
+        var video = document.querySelector("#videoElement");        
         
         if (navigator.mediaDevices.getUserMedia) {       
           navigator.mediaDevices.getUserMedia({video: true})
