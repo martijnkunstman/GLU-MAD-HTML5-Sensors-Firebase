@@ -32,30 +32,25 @@
   </head>
   <body>
     <div id="load"></div>
-    <div id="acceleration_along_X"></div>
-    <div id="acceleration_along_Y"></div>
-    <div id="acceleration_along_Z"></div>
+    <div id="acceleration_along_X">1</div>
+    <div id="acceleration_along_Y">2</div>
+    <div id="acceleration_along_Z">3</div>
+    <div id="container">
+        <video autoplay="true" id="videoElement">
+        </video>
+    </div>
 
-    <video autoplay="true" id="videoElement"></video>
-
-<script>
-
-
-
-
-document.getElementById("acceleration_along_X").
-
-
-    var video = document.querySelector("#videoElement");
-    
-    
-    if (navigator.mediaDevices.getUserMedia) {       
-      navigator.mediaDevices.getUserMedia({video: true})
-      .then(function(stream) {
-        video.srcObject = stream;
-      })
-      .catch(function(err0r) {
-        console.log("Something went wrong!");
-      });
-    }
-    </script>
+    <script>
+        var video = document.querySelector("#videoElement");
+        
+        
+        if (navigator.mediaDevices.getUserMedia) {       
+          navigator.mediaDevices.getUserMedia({video: true})
+          .then(function(stream) {
+            video.srcObject = stream;
+          })
+          .catch(function(err0r) {
+            console.log("Something went wrong!");
+          });
+        }
+        </script>
