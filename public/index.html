@@ -35,76 +35,27 @@
     <div id="acceleration_along_X"></div>
     <div id="acceleration_along_Y"></div>
     <div id="acceleration_along_Z"></div>
-    <video id="video" width="640" height="480" autoplay></video>
-    <button id="snap">Snap Photo</button>
-    <canvas id="canvas" width="640" height="480"></canvas>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-    <script src="main.js"></script>
-
-    <div id="cssfilters" style="text-align:center;">
-  <video class="videostream" autoplay="" title="Click me to apply CSS Filters" alt="Click me to apply CSS Filters"></video>
-  <p><button class="capture-button">Capture video</button>
-  </p><p><button id="cssfilters-apply">Apply CSS filter</button></p>
-</div>
+    <video autoplay="true" id="videoElement"></video>
 
 <script>
-const captureVideoButton =
-  document.querySelector('#cssfilters .capture-button');
-const cssFiltersButton =
-  document.querySelector('#cssfilters-apply');
-const video =
-  document.querySelector('#cssfilters video');
 
-let filterIndex = 0;
-const filters = [
-  'grayscale',
-  'sepia',
-  'blur',
-  'brightness',
-  'contrast',
-  'hue-rotate',
-  'hue-rotate2',
-  'hue-rotate3',
-  'saturate',
-  'invert',
-  ''
-];
 
-captureVideoButton.onclick = function() {
-  navigator.mediaDevices.getUserMedia(constraints).
-    then(handleSuccess).catch(handleError);
-};
 
-cssFiltersButton.onclick = video.onclick = function() {
-  video.className = filters[filterIndex++ % filters.length];
-};
 
-function handleSuccess(stream) {
-  video.srcObject = stream;
-}
-</script>
+document.getElementById("acceleration_along_X").
 
-  </body>
-</html>
+
+    var video = document.querySelector("#videoElement");
+    
+    
+    if (navigator.mediaDevices.getUserMedia) {       
+      navigator.mediaDevices.getUserMedia({video: true})
+      .then(function(stream) {
+        video.srcObject = stream;
+      })
+      .catch(function(err0r) {
+        console.log("Something went wrong!");
+      });
+    }
+    </script>
